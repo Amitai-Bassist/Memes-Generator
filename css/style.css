@@ -90,8 +90,8 @@ body.rtl {
 /* LAYOUT */
 
 .main-layout > *:not(.full) {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 /* COMPONENTS */
@@ -182,8 +182,8 @@ body.menu-open .main-screen {
 
 .gallery-container{
     display: grid;
-    grid-template-columns: repeat(6,1fr);
-    grid-template-rows: repeat(6,1fr);
+    grid-template-columns: repeat(5,400px);
+    grid-template-rows: repeat(6,400px);
 }
 
 /* editor */

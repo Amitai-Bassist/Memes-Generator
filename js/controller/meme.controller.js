@@ -8,8 +8,10 @@ function initEditor(img){
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
     drawImg(img)
-    createBox()
     addListeners()
+    createBox()
+    setTimeout(drawBox,500)
+    
 }
 
 function renderMeme(){
@@ -123,10 +125,10 @@ function downloadCanvas(elLink){
 // The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
 function onImgInput(ev) {
     loadImageFromInput(ev, renderImg)
-  }
+}
   
   // CallBack func will run on success load of the img
-  function loadImageFromInput(ev, onImageReady) {
+function loadImageFromInput(ev, onImageReady) {
     const reader = new FileReader()
     // After we read the file
     reader.onload = function (event) {
@@ -138,10 +140,27 @@ function onImgInput(ev) {
       // img.onload = () => onImageReady(img)
     }
     reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
-  }
+}
   
   
-  function renderImg(img) {
+function renderImg(img) {
     // Draw the img on the canvas
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+}
+
+function drawBox(x =10, y=10) {
+    gCtx.strokeStyle = 'black'
+    gCtx.strokeRect(x, y, 480, 50)
+}
+
+function drawText(text, x, y) {
+    gCtx.fillRect(10, 10, 480, 50)
+    console.log('text');
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'brown'
+    gCtx.fillStyle = 'black'
+  
+    gCtx.font = '40px Arial'
+    gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
+    gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
   }
