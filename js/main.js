@@ -12,7 +12,8 @@ function toEditorMode(el){
     document.querySelector('.image-gallery').hidden = true
     document.querySelector('.meme-editor').hidden = false
     document.querySelector('.gellery-nav').classList.remove('active')
-    initEditor(el.src)
+    initEditor(el)
+
 
     
 

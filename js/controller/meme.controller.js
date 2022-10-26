@@ -3,19 +3,27 @@
 let gElCanvas
 let gCtx
 
-function initEditor(img){
+let gIsDown
+
+function initEditor(el){
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
-    drawImg(img)
+    selectImg(el)
     addListeners()
-    createBox()
-    setTimeout(drawBox,500)
-    
+    renderMeme(el.src)
 }
 
-function renderMeme(){
-    getMeme()
+function renderMeme(img){
+    if (!img){
+        img = getUrl()
+        // drawImg(img)
+    } else{
+        drawImg(img)
+    }
+    let {txt, size, align, color} = getMeme().lines
+    drawText(txt)
+    setTimeout(drawBox,500)
 }
 
 
@@ -68,11 +76,6 @@ function onUp() {
     gIsDown = false
 }
   
-function resizeCanvas() {
-    // const elContainer = document.querySelector('.canvas-container')
-    // gElCanvas.width = elContainer.offsetWidth
-    // gElCanvas.height = elContainer.offsetHeight
-}
 
 function getEvPos(ev) {
 
@@ -95,14 +98,7 @@ function getEvPos(ev) {
     }
     return pos
 }
-  
-function clearCanvas() {
-    // Sets all pixels in the rectangle defined by starting point (x, y) and size (width, height)
-    // to transparent black, erasing any previously drawn content.
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-    // You may clear part of the canvas
-    // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height / 4)
-}
+
 
 
 function drawImg(image) {
@@ -112,6 +108,50 @@ function drawImg(image) {
     img.onload = () => {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     }
+}
+
+
+
+function resizeCanvas() {
+    // const elContainer = document.querySelector('.canvas-container')
+    // gElCanvas.width = elContainer.offsetWidth
+    // gElCanvas.height = elContainer.offsetHeight
+}
+  
+function renderImg(img) {
+    // Draw the img on the canvas
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+}
+
+function drawBox(x =10, y=10) {
+    gCtx.strokeStyle = 'black'
+    gCtx.strokeRect(x, y, 480, 50)
+}
+
+function inputText(text, x, y) {
+    setLineTxt(text)
+    renderMeme()
+  }
+
+function drawText(text, x = 200, y = 45){
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'brown'
+    gCtx.fillStyle = 'black'
+  
+    gCtx.font = '40px Arial'
+    gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
+    gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
+}
+
+
+
+  
+function clearCanvas() {
+    // Sets all pixels in the rectangle defined by starting point (x, y) and size (width, height)
+    // to transparent black, erasing any previously drawn content.
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+    // You may clear part of the canvas
+    // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height / 4)
 }
 
 function downloadCanvas(elLink){
@@ -141,26 +181,3 @@ function loadImageFromInput(ev, onImageReady) {
     }
     reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
 }
-  
-  
-function renderImg(img) {
-    // Draw the img on the canvas
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-}
-
-function drawBox(x =10, y=10) {
-    gCtx.strokeStyle = 'black'
-    gCtx.strokeRect(x, y, 480, 50)
-}
-
-function drawText(text, x, y) {
-    gCtx.fillRect(10, 10, 480, 50)
-    console.log('text');
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'brown'
-    gCtx.fillStyle = 'black'
-  
-    gCtx.font = '40px Arial'
-    gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
-  }

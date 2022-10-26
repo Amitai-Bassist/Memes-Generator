@@ -3,47 +3,46 @@
 var gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2, 'cynical': 2, 'animals':1} 
 
 var gImgs = [
-    {id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics','trump','funy face','american']},
-    {id: 2, url: 'img/2.jpg', keywords: ['cute', 'animals','animal','dog']},
-    {id: 3, url: 'img/3.jpg', keywords: ['cute', 'animals','animal','dog','baby']},
-    {id: 4, url: 'img/4.jpg', keywords: ['cat','animals','animal']},
-    {id: 5, url: 'img/5.jpg', keywords: ['funny', 'baby']},
-    {id: 6, url: 'img/6.jpg', keywords: ['funny', 'man']},
-    {id: 7, url: 'img/7.jpg', keywords: ['funny', 'baby','funy face']},
-    {id: 8, url: 'img/8.jpg', keywords: ['funny', 'cynical','smart']},
-    {id: 9, url: 'img/9.jpg', keywords: ['funny', 'baby','evil','laughing']},
-    {id: 10, url: 'img/10.jpg', keywords: ['funny', 'laughing','America']},
-    {id: 11, url: 'img/11.jpg', keywords: ['funny', 'kiss','love']},
-    {id: 12, url: 'img/12.jpg', keywords: ['funny', 'pointing','israeli']},
-    {id: 13, url: 'img/13.jpg', keywords: ['funny', 'movie','pointing']},
-    {id: 14, url: 'img/14.jpg', keywords: ['funny', 'black','rapper','america']},
-    {id: 15, url: 'img/15.jpg', keywords: ['funny', 'lord of the rings','movie']},
-    {id: 16, url: 'img/16.jpg', keywords: ['funny', 'laughing','movie','star']},
-    {id: 17, url: 'img/17.jpg', keywords: ['funny', 'politics', 'putin', 'russia']},
-    {id: 18, url: 'img/18.jpg', keywords: ['two', 'cartoon','movie','pointing']},
+    {id: 0, url: '', keywords: []},
+    {id: 1, url: 'images/meme-imgs/1.jpg', keywords: ['funny', 'politics','trump','funy face','american']},
+    {id: 2, url: 'images/meme-imgs/2.jpg', keywords: ['cute', 'animals','animal','dog']},
+    {id: 3, url: 'images/meme-imgs/3.jpg', keywords: ['cute', 'animals','animal','dog','baby']},
+    {id: 4, url: 'images/meme-imgs/4.jpg', keywords: ['cat','animals','animal']},
+    {id: 5, url: 'images/meme-imgs/5.jpg', keywords: ['funny', 'baby']},
+    {id: 6, url: 'images/meme-imgs/6.jpg', keywords: ['funny', 'man']},
+    {id: 7, url: 'images/meme-imgs/7.jpg', keywords: ['funny', 'baby','funy face']},
+    {id: 8, url: 'images/meme-imgs/8.jpg', keywords: ['funny', 'cynical','smart']},
+    {id: 9, url: 'images/meme-imgs/9.jpg', keywords: ['funny', 'baby','evil','laughing']},
+    {id: 10, url: 'images/meme-imgs/10.jpg', keywords: ['funny', 'laughing','America']},
+    {id: 11, url: 'images/meme-imgs/11.jpg', keywords: ['funny', 'kiss','love']},
+    {id: 12, url: 'images/meme-imgs/12.jpg', keywords: ['funny', 'pointing','israeli']},
+    {id: 13, url: 'images/meme-imgs/13.jpg', keywords: ['funny', 'movie','pointing']},
+    {id: 14, url: 'images/meme-imgs/14.jpg', keywords: ['funny', 'black','rapper','america']},
+    {id: 15, url: 'images/meme-imgs/15.jpg', keywords: ['funny', 'lord of the rings','movie']},
+    {id: 16, url: 'images/meme-imgs/16.jpg', keywords: ['funny', 'laughing','movie','star']},
+    {id: 17, url: 'images/meme-imgs/17.jpg', keywords: ['funny', 'politics', 'putin', 'russia']},
+    {id: 18, url: 'images/meme-imgs/18.jpg', keywords: ['two', 'cartoon','movie','pointing']},
 ]
 var gMeme = { 
     selectedImgId: 5, 
     selectedLineIdx: 0, 
-    lines: [ { 
-        txt: 'I sometimes eat Falafel', 
-        size: 20, 
-        align: 'left', 
-        color: 'red' 
-    } ] 
+    lines: [ {txt:'', size: 20, align:'center', color:'red'} ] 
 }
 
-function createBox(){
-    // gShape = {
-    //     size: 60,
-    //     color: 'blue',
-    // }
+function selectImg(el){
+    gMeme.selectedImgId = el.classList[0].split('-')[1]
+    gImgs[gMeme.selectedImgId].url = el.src
 }
 
 function getMeme(){
-
+    console.log('gImgs',gImgs);
+    return gMeme
 }
 
-function setLineTxt(){
+function getUrl(){
+    return gImgs[gMeme.selectedImgId].url
+}
 
+function setLineTxt(txt){
+    gMeme.lines.txt = txt 
 }
