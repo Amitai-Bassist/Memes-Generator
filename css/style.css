@@ -75,6 +75,10 @@ body.rtl {
     align-items: center;
 }
 
+/* grid helpers */
+.grid{
+    display: grid;
+}
 
 /* list helpers */
 .clear-list {
@@ -141,11 +145,11 @@ body.menu-open .main-screen {
 }
   
 /* MAIN NAV */
-  
+
 .main-nav li {
     border-inline-end: 1px solid #1d1d1d;
     width: 100%;
-    margin: 0;
+    margin: 25px;
 }
   
 .main-nav li:first-child {
@@ -172,6 +176,20 @@ body.menu-open .main-screen {
   
 .main-nav a:hover {
     box-shadow: inset 0px -6px 0 var(--clr-primary);
+}
+
+/* gallery */
+
+.gallery-container{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(6,1fr);
+}
+
+/* editor */
+
+canvas{
+    background-color: aqua;
 }
 
 /* footer */

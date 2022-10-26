@@ -4,32 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Meme-Generator</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
-<body class="main-layout">
+<body onload="onInit()" class="main-layout">
     <div class="main-screen full" onclick="toggleMenu()"></div>
     <header class="main-header full flex space-between align-center">
-        <div class="logo">Minimø</div>
+        <div class="logo">Meme-Generator</div>
         <nav class="main-nav ">
             <ul class="flex clear-list align-center justify-center">
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Photodiary</a></li>
-                <li><a href="#">Music</a></li>
-                <li><a href="#">Travel</a></li>
+                <li><a class="active" href="#">Gallery</a></li>
+                <li><a href="#">Mems</a></li>
+                <li><a href="#">About</a></li>
             </ul>
         </nav>
         <button type="button" class="btn-menu" onclick="toggleMenu()">☰</button>
     </header>
-    <section>
-
-    </section>
-    <main>
+    <main class="image-gallery full">
+      <section>
+        <input type="text" placeholder="Search">
+      </section>
+      <div class="grid"></div>
+      <img class="img-1" src="/images/meme-imgs/1.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-2" src="/images/meme-imgs/2.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-3" src="/images/meme-imgs/3.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-4" src="/images/meme-imgs/4.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-5" src="/images/meme-imgs/5.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-6" src="/images/meme-imgs/6.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-7" src="/images/meme-imgs/7.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-8" src="/images/meme-imgs/8.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-9" src="/images/meme-imgs/9.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-10" src="/images/meme-imgs/10.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-11" src="/images/meme-imgs/11.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-12" src="/images/meme-imgs/12.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-13" src="/images/meme-imgs/13.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-14" src="/images/meme-imgs/14.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-15" src="/images/meme-imgs/15.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-16" src="/images/meme-imgs/16.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-17" src="/images/meme-imgs/17.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+      <img class="img-18" src="/images/meme-imgs/18.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
 
     </main>
+    <section hidden class="meme-editor">
+      <h2>edit</h2>
+      <canvas width="500" height="500" id="my-canvas"></canvas>
+      <div class="control-box">
+        <input type="text" placeholder="text line">
+        <button onclick="clearCanvas()">Clear</button>
+        Text Color: <input type="color" id="text-color" name="text-color" form="frmRegister" value="#ff0000" />
+        <input type="file" class="file-input btn"
+              name="image" onchange="onImgInput(event)" />
+        <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>    
+        <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
+        <p class="user-msg"></p>
+        <div class="share-container"></div>
+      </div>
+    </section>
     <footer>
-
+        <div>Meme-Generator</div>
         <small>© All right 2022</small>
         <ul class="social-links clear-list flex">
             <li>
@@ -39,18 +72,21 @@
               <a href="#" class="fa twitter"></a>
             </li>
             <li>
-              <a href="#"><img src="images/behence.svg" alt="" /></a>
+              <!-- <a href="#"><img src="images/behence.svg" alt="" /></a>
             </li>
             <li>
               <a href="#"><img src="images/dribbble.svg" alt="" /></a>
-            </li>
+            </li> -->
           </ul>
     </footer>
 
-    <script src="js/controller.js"></script>
-    <script src="js/util.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/controller/gallery.controller.js"></script>
+    <script src="js/controller/meme.controller.js"></script>
+    <!-- <script src="js/util.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/i18n.service.js"></script>
-    <script src="js/services/todo.services.js"></script>
+    <script src="js/services/todo.services.js"></script> -->
 </body>
 </html>
