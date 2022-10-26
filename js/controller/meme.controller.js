@@ -17,13 +17,17 @@ function initEditor(el){
 function renderMeme(img){
     if (!img){
         img = getUrl()
-        // drawImg(img)
+        drawImg(img)
     } else{
         drawImg(img)
     }
-    let {txt, size, align, color} = getMeme().lines
-    drawText(txt)
-    setTimeout(drawBox,500)
+    let {txt = '', size, align, color} = getMeme().lines
+    // drawText(txt)
+    setTimeout(() => {
+        drawBox()
+        drawText(txt) 
+    },20)
+    // setTimeout(drawBox,500)
 }
 
 
