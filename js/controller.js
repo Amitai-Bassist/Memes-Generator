@@ -1,7 +1,7 @@
 'use strict'
 
 function onInit(){
-    
+    alert('hi!')
 }
 
 function toggleMenu() {
