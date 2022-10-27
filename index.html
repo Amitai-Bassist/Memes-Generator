@@ -21,7 +21,7 @@
                 <li><a href="#">About</a></li>
             </ul>
         </nav>
-        <button type="button" class="btn-menu" onclick="toggleMenu()">☰</button>
+        <button type="button" class="btn-menu" onclick="toggleMenu()" >☰</button>
       </div>
     </header>
 
@@ -31,11 +31,10 @@
         <button>🔀</button>
       </section>
       <div class="grid gallery-container">
-        <div class="user-image" onclick="toEditorMode(this)">Upload your own image<input type="file" class="file-input btn"
-          name="image" /></div>
-        <div>
-          <img class="img-1" src="images/meme-imgs/1.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        </div>
+        <!-- <div class="user-image" onclick="toEditorMode(this)">Upload your own image<input type="file" class="file-input btn"
+          name="image" /></div> -->
+        <img class="img-0" src="images/meme-imgs/0.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+        <img class="img-1" src="images/meme-imgs/1.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
         <img class="img-2" src="images/meme-imgs/2.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
         <img class="img-3" src="images/meme-imgs/3.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
         <img class="img-4" src="images/meme-imgs/4.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
@@ -56,16 +55,18 @@
       </div>
 
     </main>
-    <section hidden class="meme-editor flex" style="display: none;">
-      <canvas width="500" height="500" id="my-canvas"></canvas>
-      <div class="control-box">
+    <section hidden class="meme-editor grid full" style="display: none;">
+      <div class="canvas-container">
+        <canvas width="500" height="500" id="my-canvas"></canvas>
+      </div>
+      <div class="control-box grid">
         <input class="txt-line-input" type="text" placeholder="text line" oninput="inputText(this.value)">
-        <div>
+        <div class="btns-1">
           <button>⬆⬇</button>
           <button onclick="addTxtRow()">➕</button>
           <button><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAY0lEQVRIiWNgGAWDGBxnYGD4j4aPUcvww1gMJxcfxmYBE7Vcigf8p4MdQwAw4pGjVhBhtYMecYwVjFo8avGoxaMWj1o8avHQsvgJFcx/TI4mT6hGcht5jxgYGDwodPgoGMIAAIf9LS9I+wcVAAAAAElFTkSuQmCC"></button>
         </div>
-        <div>
+        <div class="btns-2">
           <button onclick="changeTxtSize(10)">A+</button>
           <button onclick="changeTxtSize(-10)">A-</button>
           <button><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAM0lEQVRIiWNgGAUEACMa/z+1zWWikoHDGFAjDtDNQAGjcUAQjOaDgQej+WDgwWg+GAEAAKBZBRB/eva4AAAAAElFTkSuQmCC"></button>
@@ -79,14 +80,16 @@
           <button>😂😅</button>
           <button>😅</button>
         </div>
-        <div>
+        <div class="btns-3">
           <button>
             <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>    
           </button>
           <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
         </div>
-        <button onclick="clearCanvas()">Clear</button>
-        <button onclick="toGalleryMode()">Back to Gallery</button>
+        <div class="btns-4">
+          <button onclick="clearCanvas()">Clear</button>
+          <button onclick="toGalleryMode()">Back to Gallery</button>
+        </div>
         <p class="user-msg"></p>
         <div class="share-container"></div>
       </div>

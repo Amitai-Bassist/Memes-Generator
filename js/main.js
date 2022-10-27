@@ -11,7 +11,7 @@ function toggleMenu() {
 function toEditorMode(el){
     document.querySelector('.image-gallery').hidden = true
     document.querySelector('.meme-editor').hidden = false
-    document.querySelector('.meme-editor').style.display = 'flex'
+    document.querySelector('.meme-editor').style.display = 'grid'
     document.querySelector('.gellery-nav').classList.remove('active')
     initEditor(el)
     
