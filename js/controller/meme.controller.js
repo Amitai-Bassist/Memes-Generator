@@ -3,7 +3,11 @@
 let gElCanvas
 let gCtx
 
+let gLineIdx = 0
+
 let gIsDown
+let gStartPos
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function initEditor(el){
     gElCanvas = document.getElementById('my-canvas')
@@ -21,15 +25,23 @@ function renderMeme(img){
     } else{
         drawImg(img)
     }
-    let {txt = '', size, align, color} = getMeme().lines
-    // drawText(txt)
-    setTimeout(() => {
-        drawBox()
-        drawText(txt) 
-    },20)
-    // setTimeout(drawBox,500)
+    let lines = getMeme().lines
+    lines.map((line)=>{
+        let {txt, y, x, size, align, color , isSelected} = line
+        setTimeout(() => {
+            if (isSelected) drawBox(10, y-37)
+            drawText(txt, x, y) 
+        },20)
+    })
 }
 
+function addTxtRow(){
+    gLineIdx++
+    setSelectedLine(gLineIdx)
+    renderMeme()
+    document.querySelector('.txt-line-input').value = ''
+    
+}
 
 function addListeners() {
     addMouseListeners()
@@ -58,7 +70,10 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     gIsDown = true
     console.log(gIsDown);
-    renderShape(pos)
+    console.log(pos);
+    
+    
+    
     //Save the pos we start from 
     gStartPos = pos
     
@@ -69,7 +84,7 @@ function onMove(ev) {
     if (!gIsDown) return
     console.log('Im from onMove')
     const pos = getEvPos(ev)
-    renderShape(pos)
+    renderMeme()
     //Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
@@ -129,22 +144,28 @@ function renderImg(img) {
 
 function drawBox(x =10, y=10) {
     gCtx.strokeStyle = 'black'
-    gCtx.strokeRect(x, y, 480, 50)
+    
+    gCtx.strokeRect(x, y, 480,50)
 }
 
 function inputText(text, x, y) {
-    setLineTxt(text)
+    setLineTxt(text,gLineIdx)
     renderMeme()
   }
 
-function drawText(text, x = 200, y = 45){
+function drawText(text, x = 200, y = 47){
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'brown'
+    gCtx.strokeStyle = getColor(gLineIdx)
     gCtx.fillStyle = 'black'
-  
-    gCtx.font = '40px Arial'
+    let fontSize = getTextSize(gLineIdx)
+    gCtx.font = `${fontSize}px Arial`
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
+}
+
+function changeTxtSize(num){
+    setTxtSize(num, gLineIdx)
+    renderMeme()
 }
 
 
@@ -184,4 +205,8 @@ function loadImageFromInput(ev, onImageReady) {
       // img.onload = () => onImageReady(img)
     }
     reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+}
+
+function changeColor(value){
+    setColor(value,gLineIdx)
 }

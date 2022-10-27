@@ -26,7 +26,9 @@ var gImgs = [
 var gMeme = { 
     selectedImgId: 5, 
     selectedLineIdx: 0, 
-    lines: [ {txt:'', size: 20, align:'center', color:'red'} ] 
+    lines: [ {txt:'', x: 200, y: 47, size: 40, align:'center', color:'red', isSelected: true},
+    {txt:'', x: 200, y: 437, size: 40, align:'center', color:'red', isSelected: false},
+    {txt:'', x: 200, y: 10, size: 40, align:'center', color:'red' , isSelected: false}] 
 }
 
 function selectImg(el){
@@ -35,14 +37,41 @@ function selectImg(el){
 }
 
 function getMeme(){
-    console.log('gImgs',gImgs);
     return gMeme
+}
+
+function setSelectedLine(index){
+    gMeme.lines.map((line,idx) => {
+        line.isSelected = (idx === index) ? true: false
+    })
 }
 
 function getUrl(){
     return gImgs[gMeme.selectedImgId].url
 }
 
-function setLineTxt(txt){
-    gMeme.lines.txt = txt 
+function setLineTxt(txt,idx){
+    gMeme.lines[idx].txt = txt 
+}
+
+function getCoords(idx){
+    let {x,y} = gMeme.lines[idx]
+    return {x, y: y - 37}
+}
+
+function setColor(value,idx){
+    console.log('value',value);
+    gMeme.lines[idx].color = value
+}
+
+function getColor(idx){
+    return gMeme.lines[idx].color
+}
+
+function setTxtSize(num, idx){
+    gMeme.lines[idx].size += num
+}
+
+function getTextSize(idx){
+    return gMeme.lines[idx].size
 }

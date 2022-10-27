@@ -25,6 +25,7 @@
     <main class="image-gallery full">
       <section>
         <input type="text" placeholder="Search">
+        <button>🔀</button>
       </section>
       <div class="grid gallery-container">
         <div class="user-image" onclick="toEditorMode(this)">Upload your own image</div>
@@ -53,15 +54,27 @@
       
       <canvas width="500" height="500" id="my-canvas"></canvas>
       <div class="control-box">
-        <input type="text" placeholder="text line" oninput="inputText(this.value)">
+        <input class="txt-line-input" type="text" placeholder="text line" oninput="inputText(this.value)">
+        <div>
+          <button>⬆⬇</button>
+          <button onclick="addTxtRow()">➕</button>
+          <button><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAY0lEQVRIiWNgGAWDGBxnYGD4j4aPUcvww1gMJxcfxmYBE7Vcigf8p4MdQwAw4pGjVhBhtYMecYwVjFo8avGoxaMWj1o8avHQsvgJFcx/TI4mT6hGcht5jxgYGDwodPgoGMIAAIf9LS9I+wcVAAAAAElFTkSuQmCC"></button>
+        </div>
+        <div>
+          <button onclick="changeTxtSize(10)">A+</button>
+          <button onclick="changeTxtSize(-10)">A-</button>
+          Text Color: <input type="color" id="text-color" name="text-color" form="frmRegister" value="#ff0000" onchange="changeColor(this.value)"/>
+        </div>
+        <div>
+          <button>
+            <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>    
+          </button>
+          <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
+        </div>
         <button onclick="clearCanvas()">Clear</button>
-        Text Color: <input type="color" id="text-color" name="text-color" form="frmRegister" value="#ff0000" />
         <input type="file" class="file-input btn"
         name="image" />
-        <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>    
-        <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
         <button onclick="toGalleryMode()">Back to Gallery</button>
-        <button onclick="drawBox(10, 10)">add box</button>
         <p class="user-msg"></p>
         <div class="share-container"></div>
       </div>
