@@ -245,7 +245,6 @@ body.menu-open .main-screen {
 /* editor */
 
 .meme-editor{
-    margin-top: 10px;
     grid-template-columns: 500px 1fr;
     /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
     grid-auto-flow: dense;
@@ -347,14 +346,16 @@ canvas{
         height: 350px;
     }
     .meme-editor{
-        margin-top: 10px;
+        
         grid-template-columns: 350px 1fr;
     }
 }
 @media (max-width: 560px) {
-    
+    html {
+      width: 100%;
+    }
     .main-header {
-      position: fixed;
+      /* position: fixed; */
       width: 100%;
       /* z-index: 1; */
     }
@@ -407,7 +408,7 @@ canvas{
     }
 
     .meme-editor{
-        margin-top: 52px;
+        
         grid-template-columns: 330px ;
         grid-template-rows: 250px 1fr;
         grid-gap: 4px;

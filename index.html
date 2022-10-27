@@ -13,7 +13,7 @@
     <div class="main-screen full" onclick="toggleMenu()"></div>
     <header class="main-header full main-layout">
       <div class="header flex space-between align-center">
-        <div class="logo">Meme</div>
+        <div class="logo">Memes</div>
         <nav class="main-nav ">
             <ul class="flex clear-list flex align-center justify-center">
                 <li><a class="active gellery-nav" href="#" onclick="toGalleryMode()">Gallery</a></li>
@@ -25,35 +25,13 @@
       </div>
     </header>
 
-    <main class="image-gallery full">
-      <section>
-        <input type="text" placeholder="Search">
+    <main class="image-gallery full space-between align-center">
+      <section class="">
+        <input type="text" placeholder="Search" oninput="onImgSearch(this.value)">
+        <div class="common-words"></div>
         <button>🔀</button>
       </section>
-      <div class="grid gallery-container">
-        <!-- <div class="user-image" onclick="toEditorMode(this)">Upload your own image<input type="file" class="file-input btn"
-          name="image" /></div> -->
-        <img class="img-0" src="images/meme-imgs/0.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-1" src="images/meme-imgs/1.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-2" src="images/meme-imgs/2.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-3" src="images/meme-imgs/3.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-4" src="images/meme-imgs/4.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-5" src="images/meme-imgs/5.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-6" src="images/meme-imgs/6.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-7" src="images/meme-imgs/7.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-8" src="images/meme-imgs/8.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-9" src="images/meme-imgs/9.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-10" src="images/meme-imgs/10.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-11" src="images/meme-imgs/11.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-12" src="images/meme-imgs/12.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-13" src="images/meme-imgs/13.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-14" src="images/meme-imgs/14.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-15" src="images/meme-imgs/15.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-16" src="images/meme-imgs/16.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-17" src="images/meme-imgs/17.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-        <img class="img-18" src="images/meme-imgs/18.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
-      </div>
-
+      <div class="grid gallery-container"></div>
     </main>
     <section hidden class="meme-editor grid full" style="display: none;">
       <div class="canvas-container">

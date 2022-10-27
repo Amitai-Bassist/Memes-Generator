@@ -1,9 +1,11 @@
 'use strict'
 
-var gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2, 'cynical': 2, 'animals':1} 
+var gKeywordSearchCountMap = {'funny': 12,'cat': 10, 'baby': 7, 'cynical': 8, 'animals':6} 
+
+let gSearchTxt = ''
 
 var gImgs = [
-    {id: 0, url: '', keywords: []},
+    {id: 0, url: 'images/meme-imgs/0.jpg', keywords: []},
     {id: 1, url: 'images/meme-imgs/1.jpg', keywords: ['funny', 'politics','trump','funy face','american']},
     {id: 2, url: 'images/meme-imgs/2.jpg', keywords: ['cute', 'animals','animal','dog']},
     {id: 3, url: 'images/meme-imgs/3.jpg', keywords: ['cute', 'animals','animal','dog','baby']},
@@ -86,4 +88,24 @@ function setIcon(icon){
 
 function getIcon(){
     return gMeme.icons[0] || {iconTxt: '', iconIdx:0 ,iconIdy: 0}
+}
+
+function getCommonWords(){
+    return gKeywordSearchCountMap
+}
+
+function getImgsForDisplay(){
+    let imgs = gImgs.filter((img) => {
+        console.log('words:',img.keywords);
+        return img.keywords.some(word => {
+            return word.toLowerCase().includes(gSearchTxt.toLowerCase())
+        })
+    })
+    console.log(imgs);
+    return imgs.map((img)=> {return img.url}) 
+     
+}
+
+function setImgFilter(value){
+    gSearchTxt = value
 }
