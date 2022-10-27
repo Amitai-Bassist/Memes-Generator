@@ -31,7 +31,7 @@ function renderMeme(img){
         let {txt, x, y, size, align, color , isSelected} = line
         setTimeout(() => {
             if (isSelected) drawBox(10, y-37,size)
-            drawText(txt, x, y) 
+            drawText(txt, x, y,size) 
         },20)
     })
     setTimeout(()=>{
@@ -75,7 +75,7 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     gIsDown = true
     console.log(gIsDown);
-    console.log(pos);
+    
     
     
     
@@ -158,12 +158,12 @@ function inputText(text, x, y) {
     renderMeme()
   }
 
-function drawText(text, x = 250, y = 47){
+function drawText(text, x = 250, y = 47,size){
     gCtx.lineWidth = 2
     gCtx.strokeStyle = getColor(gLineIdx)
     gCtx.fillStyle = 'black'
     let fontSize = getTextSize(gLineIdx)
-    gCtx.font = `${fontSize}px Arial`
+    gCtx.font = `${size}px Arial`
     gCtx.textAlign = 'center'
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
@@ -220,4 +220,16 @@ function changeColor(value){
 function choseIcon(icon){
     setIcon(icon)
     renderMeme()
+}
+
+function changeRow(){
+    if (!gLineIdx) gLineIdx++
+    else gLineIdx--
+    setSelectedLine(gLineIdx)
+    renderMeme()
+}
+
+function clearRow(){
+    clearTxt(gLineIdx)
+    changeRow()
 }

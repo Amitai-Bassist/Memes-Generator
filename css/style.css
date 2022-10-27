@@ -64,6 +64,23 @@ a {
     color: var(--clr-5);
 }
 
+.btn-editor{
+  height: 2rem;
+  width: 2rem;
+}
+
+.btns-1 .change{
+  background-color: #42b3d0 ;
+}
+
+.btns-1 .clear{
+  background-color: #e23b36;
+}
+
+.btns-1 .pluse{
+  background-color: #3dd053;
+}
+
 
 /* HELPERS */
 
@@ -106,8 +123,8 @@ a {
 
 .main-layout > *:not(.full) {
     max-width: var(--l);
-    margin-inline-end: 10px;
-    margin-inline-start: 10px;
+    margin-inline-end: 6px;
+    margin-inline-start: 6px;
 }
 
 /* COMPONENTS */
@@ -136,6 +153,8 @@ body.menu-open .main-screen {
     background-color: var(--clr3);
     color: var(--clr-5);
     box-shadow: inset 0px -6px 0 var(--clr4);
+    box-sizing: border-box;
+    width: 100%;
   
     position: relative;
 }
@@ -143,6 +162,7 @@ body.menu-open .main-screen {
 .main-header .logo {
     font-family: euro, sans-serif;
     font-size: 2.5rem;
+    padding-left: 20px;
 }
 
 .main-header .title-logo {
@@ -239,7 +259,8 @@ body.menu-open .main-screen {
 }
 
 .gallery-container img:hover{
-    box-shadow: black ;
+  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 
 /* editor */
@@ -249,7 +270,7 @@ body.menu-open .main-screen {
     /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
     grid-auto-flow: dense;
     gap: 10px;
-    padding-left: 60px;
+    padding-left: 6px;
     padding-right: 60px;
     width: auto;
 }
@@ -276,7 +297,7 @@ canvas{
     'btns-3 btns-3 btns-3 btns-3 btns-3'
     'btns-4 btns-4 btns-4 btns-4 btns-4';
     grid-gap: 10px;
-    
+    background-color: #393c43;
 /* 
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-flow: dense;
@@ -286,8 +307,11 @@ canvas{
 }
 
 .txt-line-input{
-    border-radius: 10%;
+    border-radius: 30%;
     grid-area: head;
+    width: 80%;
+    margin-left: 5%;
+    padding-left: 3%;
 }
 
 .btns-1{
@@ -296,11 +320,12 @@ canvas{
 
 .btns-2{
     grid-area: btns-2;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    
+    background: #19a59f;
 }
 .btns-3{
     grid-area: btns-3;
+    background-color: #ffffff;
 }
 .icon-bar{
     grid-area: icon-bar;
@@ -351,12 +376,11 @@ canvas{
     }
 }
 @media (max-width: 560px) {
-    html {
-      width: 100%;
-    }
+    
     .main-header {
       /* position: fixed; */
       width: 100%;
+      margin-bottom: 4px;
       /* z-index: 1; */
     }
   

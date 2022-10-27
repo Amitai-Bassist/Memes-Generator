@@ -19,13 +19,11 @@ function renderCommonWords(){
         <button style="font-size:${wordsMap[word] *5}px;">${word}</button>
         `
     })
-    console.log(strHTML);
     document.querySelector('.common-words').innerHTML = strHTML
 }
 
 function renderGalleryImgs(){
     let imgsUrl = getImgsForDisplay()
-    console.log(imgsUrl);
     let strHTML = ``
     imgsUrl.map((url,idx) => {
         strHTML += `<img class="img-${idx}" src="${url}" 

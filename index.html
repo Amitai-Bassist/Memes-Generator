@@ -40,9 +40,9 @@
       <div class="control-box grid">
         <input class="txt-line-input" type="text" placeholder="text line" oninput="inputText(this.value)">
         <div class="btns-1">
-          <button>⬆⬇</button>
-          <button onclick="addTxtRow()">➕</button>
-          <button><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAY0lEQVRIiWNgGAWDGBxnYGD4j4aPUcvww1gMJxcfxmYBE7Vcigf8p4MdQwAw4pGjVhBhtYMecYwVjFo8avGoxaMWj1o8avHQsvgJFcx/TI4mT6hGcht5jxgYGDwodPgoGMIAAIf9LS9I+wcVAAAAAElFTkSuQmCC"></button>
+          <button class="btn-editor change" onclick="changeRow()">⬆⬇</button>
+          <button class="btn-editor pluse" onclick="addTxtRow()">➕</button>
+          <button class="btn-editor clear" onclick="clearRow()">🚽</button>
         </div>
         <div class="btns-2">
           <button onclick="changeTxtSize(10)">A+</button>

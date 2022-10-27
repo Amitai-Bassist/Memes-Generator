@@ -31,7 +31,7 @@ var gMeme = {
     icons: [],
     lines: [ {txt:'', x: 250, y: 47, size: 40, align:'center', color:'red', isSelected: true},
     {txt:'', x: 250, y: 437, size: 40, align:'center', color:'red', isSelected: false},
-    {txt:'', x: 250, y: 10, size: 40, align:'center', color:'red' , isSelected: false}] 
+    {txt:'', x: 250, y: 250, size: 40, align:'center', color:'red' , isSelected: false}] 
 }
 
 function selectImg(el){
@@ -96,16 +96,18 @@ function getCommonWords(){
 
 function getImgsForDisplay(){
     let imgs = gImgs.filter((img) => {
-        console.log('words:',img.keywords);
         return img.keywords.some(word => {
             return word.toLowerCase().includes(gSearchTxt.toLowerCase())
         })
     })
-    console.log(imgs);
     return imgs.map((img)=> {return img.url}) 
      
 }
 
 function setImgFilter(value){
     gSearchTxt = value
+}
+
+function clearTxt(idx){
+    gMeme.lines[idx].txt = ''
 }
