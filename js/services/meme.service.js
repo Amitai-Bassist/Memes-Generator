@@ -29,9 +29,9 @@ var gMeme = {
     selectedImgId: 5, 
     selectedLineIdx: 0, 
     icons: [],
-    lines: [ {txt:'', x: 250, y: 47, size: 40, align:'center', color:'red', isSelected: true},
-    {txt:'', x: 250, y: 437, size: 40, align:'center', color:'red', isSelected: false},
-    {txt:'', x: 250, y: 250, size: 40, align:'center', color:'red' , isSelected: false}] 
+    lines: [ {txt:'', x: 250, y: 70, size: 60, align:'center', color:'red', isSelected: true},
+    {txt:'', x: 250, y: 437, size: 60, align:'center', color:'red', isSelected: false},
+    {txt:'', x: 250, y: 250, size: 60, align:'center', color:'red' , isSelected: false}] 
 }
 
 function selectImg(el){
@@ -73,7 +73,7 @@ function getColor(idx){
 
 function setTxtSize(num, idx){
     gMeme.lines[idx].size += num
-    gMeme.lines[idx].y += num/2
+    // gMeme.lines[idx].y += num/2
 
 }
 

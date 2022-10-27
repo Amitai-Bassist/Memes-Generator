@@ -30,8 +30,8 @@ function renderMeme(img){
     lines.map((line,idx)=>{
         let {txt, x, y, size, align, color , isSelected} = line
         setTimeout(() => {
-            if (isSelected) drawBox(10, y-37,size)
-            drawText(txt, x, y,size) 
+            if (isSelected) drawBox(10, y-40,size)
+            drawText(txt, x, y,size,color) 
         },20)
     })
     setTimeout(()=>{
@@ -149,8 +149,8 @@ function renderImg(img) {
 
 function drawBox(x =10, y=10,size = 50) {
     gCtx.strokeStyle = 'black'
-    
-    gCtx.strokeRect(x, y, 480,size)
+    y += (50 - size)
+    gCtx.strokeRect(x, y , 480,size)
 }
 
 function inputText(text, x, y) {
@@ -158,9 +158,9 @@ function inputText(text, x, y) {
     renderMeme()
   }
 
-function drawText(text, x = 250, y = 47,size){
+function drawText(text, x = 250, y = 47,size,color){
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = getColor(gLineIdx)
+    gCtx.strokeStyle = color
     gCtx.fillStyle = 'black'
     let fontSize = getTextSize(gLineIdx)
     gCtx.font = `${size}px Arial`
