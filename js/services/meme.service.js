@@ -26,9 +26,10 @@ var gImgs = [
 var gMeme = { 
     selectedImgId: 5, 
     selectedLineIdx: 0, 
-    lines: [ {txt:'', x: 200, y: 47, size: 40, align:'center', color:'red', isSelected: true},
-    {txt:'', x: 200, y: 437, size: 40, align:'center', color:'red', isSelected: false},
-    {txt:'', x: 200, y: 10, size: 40, align:'center', color:'red' , isSelected: false}] 
+    icons: [],
+    lines: [ {txt:'', x: 250, y: 47, size: 40, align:'center', color:'red', isSelected: true},
+    {txt:'', x: 250, y: 437, size: 40, align:'center', color:'red', isSelected: false},
+    {txt:'', x: 250, y: 10, size: 40, align:'center', color:'red' , isSelected: false}] 
 }
 
 function selectImg(el){
@@ -70,8 +71,19 @@ function getColor(idx){
 
 function setTxtSize(num, idx){
     gMeme.lines[idx].size += num
+    gMeme.lines[idx].y += num/2
+
 }
 
 function getTextSize(idx){
     return gMeme.lines[idx].size
+}
+
+function setIcon(icon){
+    gMeme.icons.push({iconTxt: icon, iconIdx:250,iconIdy:250})
+    
+}
+
+function getIcon(){
+    return gMeme.icons[0] || {iconTxt: '', iconIdx:0 ,iconIdy: 0}
 }

@@ -11,25 +11,31 @@
 </head>
 <body onload="onInit()" class="main-layout">
     <div class="main-screen full" onclick="toggleMenu()"></div>
-    <header class="main-header full flex space-between align-center">
+    <header class="main-header full main-layout">
+      <div class="header flex space-between align-center">
         <div class="logo">Meme-Generator</div>
         <nav class="main-nav ">
-            <ul class="flex clear-list align-center justify-center">
-                <li><a class="gellery-nav active" href="#" onclick="toGalleryMode()">Gallery</a></li>
+            <ul class="flex clear-list flex align-center justify-center">
+                <li><a class="active gellery-nav" href="#" onclick="toGalleryMode()">Gallery</a></li>
                 <li><a href="#">Mems</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </nav>
         <button type="button" class="btn-menu" onclick="toggleMenu()">☰</button>
+      </div>
     </header>
+
     <main class="image-gallery full">
       <section>
         <input type="text" placeholder="Search">
         <button>🔀</button>
       </section>
       <div class="grid gallery-container">
-        <div class="user-image" onclick="toEditorMode(this)">Upload your own image</div>
-        <img class="img-1" src="images/meme-imgs/1.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+        <div class="user-image" onclick="toEditorMode(this)">Upload your own image<input type="file" class="file-input btn"
+          name="image" /></div>
+        <div>
+          <img class="img-1" src="images/meme-imgs/1.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
+        </div>
         <img class="img-2" src="images/meme-imgs/2.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
         <img class="img-3" src="images/meme-imgs/3.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
         <img class="img-4" src="images/meme-imgs/4.jpg" alt="img for meme editor" onclick="toEditorMode(this)">
@@ -50,8 +56,7 @@
       </div>
 
     </main>
-    <section hidden class="meme-editor flex">
-      
+    <section hidden class="meme-editor flex" style="display: none;">
       <canvas width="500" height="500" id="my-canvas"></canvas>
       <div class="control-box">
         <input class="txt-line-input" type="text" placeholder="text line" oninput="inputText(this.value)">
@@ -63,7 +68,16 @@
         <div>
           <button onclick="changeTxtSize(10)">A+</button>
           <button onclick="changeTxtSize(-10)">A-</button>
+          <button><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAM0lEQVRIiWNgGAUEACMa/z+1zWWikoHDGFAjDtDNQAGjcUAQjOaDgQej+WDgwWg+GAEAAKBZBRB/eva4AAAAAElFTkSuQmCC"></button>
+          <button><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAQklEQVRIiWNgGABwlIGB4T+Z+DC6YUxYLPhHgeP+U6B3pANKIhZvhMMimZKIxQVGI5x8MJqThykYzckjDIzmZBQAAC8YY1KjkRlKAAAAAElFTkSuQmCC"></button>
+          <button><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAQElEQVRIie3UMQoAIAwEwcX//8qHxcrGMkRF3IHUR+A40I86EMXX15C2+YkpDuWoRqZ8lkuAy6WLXC6luVx62wBcIWBQUp9PbQAAAABJRU5ErkJggg=="></button>
           Text Color: <input type="color" id="text-color" name="text-color" form="frmRegister" value="#ff0000" onchange="changeColor(this.value)"/>
+        </div>
+        <div class="icon-bar">
+          <button onclick="choseIcon('😎')">😎</button>
+          <button>😍</button>
+          <button>😂😅</button>
+          <button>😅</button>
         </div>
         <div>
           <button>
@@ -72,8 +86,6 @@
           <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
         </div>
         <button onclick="clearCanvas()">Clear</button>
-        <input type="file" class="file-input btn"
-        name="image" />
         <button onclick="toGalleryMode()">Back to Gallery</button>
         <p class="user-msg"></p>
         <div class="share-container"></div>

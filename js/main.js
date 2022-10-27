@@ -11,17 +11,19 @@ function toggleMenu() {
 function toEditorMode(el){
     document.querySelector('.image-gallery').hidden = true
     document.querySelector('.meme-editor').hidden = false
+    document.querySelector('.meme-editor').style.display = 'flex'
     document.querySelector('.gellery-nav').classList.remove('active')
     initEditor(el)
-
-
     
-
+    
+    
+    
 }
 
 function toGalleryMode(){
     document.querySelector('.image-gallery').hidden = false
     document.querySelector('.meme-editor').hidden = true
+    document.querySelector('.meme-editor').style.display = 'none'
     document.querySelector('.gellery-nav').classList.add('active')
 }
 

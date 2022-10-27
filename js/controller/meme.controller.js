@@ -25,14 +25,19 @@ function renderMeme(img){
     } else{
         drawImg(img)
     }
+    
     let lines = getMeme().lines
-    lines.map((line)=>{
-        let {txt, y, x, size, align, color , isSelected} = line
+    lines.map((line,idx)=>{
+        let {txt, x, y, size, align, color , isSelected} = line
         setTimeout(() => {
-            if (isSelected) drawBox(10, y-37)
+            if (isSelected) drawBox(10, y-37,size)
             drawText(txt, x, y) 
         },20)
     })
+    setTimeout(()=>{
+        let {iconTxt = '',iconIdx = 0,iconIdy = 0} = getIcon()
+        drawText(iconTxt, iconIdx, iconIdy)
+    },10)
 }
 
 function addTxtRow(){
@@ -142,10 +147,10 @@ function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function drawBox(x =10, y=10) {
+function drawBox(x =10, y=10,size = 50) {
     gCtx.strokeStyle = 'black'
     
-    gCtx.strokeRect(x, y, 480,50)
+    gCtx.strokeRect(x, y, 480,size)
 }
 
 function inputText(text, x, y) {
@@ -153,12 +158,13 @@ function inputText(text, x, y) {
     renderMeme()
   }
 
-function drawText(text, x = 200, y = 47){
+function drawText(text, x = 250, y = 47){
     gCtx.lineWidth = 2
     gCtx.strokeStyle = getColor(gLineIdx)
     gCtx.fillStyle = 'black'
     let fontSize = getTextSize(gLineIdx)
     gCtx.font = `${fontSize}px Arial`
+    gCtx.textAlign = 'center'
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
 }
@@ -209,4 +215,9 @@ function loadImageFromInput(ev, onImageReady) {
 
 function changeColor(value){
     setColor(value,gLineIdx)
+}
+
+function choseIcon(icon){
+    setIcon(icon)
+    renderMeme()
 }
