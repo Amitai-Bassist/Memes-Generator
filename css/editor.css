@@ -94,14 +94,20 @@ canvas{
 }
 
 .download-btn{
-  background-color: #8f44bb;
-  border-radius: 10%;
+    background-color: #8f44bb;
+    border-radius: 10%;
+    color: #faf9fc;
 }
 
 .share-btn{
-  background-color: #1e7cd3;
+    background-color: #1e7cd3;
+    color: #faf9fc;
 }
 
+.clear-btn{
+    color: #faf9fc;
+    background-color: #3dd053;
+}
 
 /* FOR MOBILE ONLY  */
 @media (max-width: 780px){
@@ -120,21 +126,23 @@ canvas{
     .meme-editor{
         
         grid-template-columns: 320px ;
-        grid-template-rows: 250px 1fr;
+        grid-template-rows: 300px 1fr;
         grid-gap: 4px;
         /* align-items: center; */
     }
 
     .canvas-container{
-        width: 250px;
-        height: 250px;
-        margin-left: 40px;
+        width: 300px;
+        height: 300px;
+        /* margin-left: 40px; */
     }
     .control-box{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 30px 40px 40px 30px 30px 30px;
         grid-gap:2px;
     }
+
+    
 }
 
 @media (min-width: 780px) {
