@@ -162,7 +162,6 @@ function drawText(text, x = 250, y = 47,size,color){
     gCtx.lineWidth = 2
     gCtx.strokeStyle = color
     gCtx.fillStyle = 'black'
-    let fontSize = getTextSize(gLineIdx)
     gCtx.font = `${size}px Arial`
     gCtx.textAlign = 'center'
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
