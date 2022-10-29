@@ -4,6 +4,8 @@ let gElCanvas
 let gCtx
 
 let gLineIdx = 0
+let gIconIdx = 0
+let gLineDragIdx = -1
 
 let gIsDown
 let gStartPos
@@ -15,17 +17,19 @@ function initEditor(el){
     resizeCanvas()
     selectImg(el)
     addListeners()
+    renderIconsBar()
     renderMeme(el.src)
+
 }
 
 function renderMeme(img){
+    
     if (!img){
         img = getUrl()
         drawImg(img)
     } else{
         drawImg(img)
     }
-    
     let lines = getMeme().lines
     lines.map((line,idx)=>{
         let {txt, x, y, size, align, color , isSelected} = line
@@ -34,8 +38,10 @@ function renderMeme(img){
             drawText(txt, x, y,size,color) 
         },20)
     })
+    
     setTimeout(()=>{
-        let {iconTxt = '',iconIdx = 0,iconIdy = 0} = getIcon()
+        let icon = getIcon()
+        let {iconTxt,iconIdx,iconIdy} = icon
         drawText(iconTxt, iconIdx, iconIdy)
     },10)
 }
@@ -70,37 +76,45 @@ function addTouchListeners() {
 }
   
 function onDown(ev) {
-    console.log('Im from onDown')
+    // console.log('Im from onDown')
     //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
     gIsDown = true
-    console.log(gIsDown);
-    
-    
-    
-    
+    let lineIdx = lineClickedIdx(pos)
+    if (lineIdx < 0) return
+    console.log('lineIdx',lineIdx);
+    gLineDragIdx = lineIdx
+    gLineIdx = lineIdx
+    setSelectedLine(gLineIdx)
+    setTxtInput()
+    renderMeme()
     //Save the pos we start from 
     gStartPos = pos
-    
+    document.body.style.cursor = 'grabbing'
 }
 
 function onMove(ev) {
-    console.log(gIsDown);
+    // console.log(gIsDown);
     if (!gIsDown) return
-    console.log('Im from onMove')
     const pos = getEvPos(ev)
-    renderMeme()
+    // console.log('Im from onMove')
+    // if (!gLineDragIdx) return
     //Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
+    console.log('dx:',dx,'dy:',dy);
+    setLineCoords(dx,dy,gLineDragIdx)
+    gStartPos = pos
+    renderMeme()
 }
   
 function onUp() {
     console.log('Im from onUp')
     gIsDown = false
+    gLineDragIdx = -1
+    document.body.style.cursor = 'auto'
 }
   
-
 function getEvPos(ev) {
 
     //Gets the offset pos , the default pos
@@ -123,8 +137,6 @@ function getEvPos(ev) {
     return pos
 }
 
-
-
 function drawImg(image) {
     const img = new Image() // Create a new html img element
     img.src = image // Send a network req to get that image, define the img src
@@ -133,8 +145,6 @@ function drawImg(image) {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     }
 }
-
-
 
 function resizeCanvas() {
     // const elContainer = document.querySelector('.canvas-container')
@@ -172,9 +182,6 @@ function changeTxtSize(num){
     setTxtSize(num, gLineIdx)
     renderMeme()
 }
-
-
-
   
 function clearCanvas() {
     // Sets all pixels in the rectangle defined by starting point (x, y) and size (width, height)
@@ -216,8 +223,8 @@ function changeColor(value){
     setColor(value,gLineIdx)
 }
 
-function choseIcon(icon){
-    setIcon(icon)
+function choseIcon(idx){
+    setIcon(gIconIdx + idx)
     renderMeme()
 }
 
@@ -231,4 +238,24 @@ function changeRow(){
 function clearRow(){
     clearTxt(gLineIdx)
     changeRow()
+}
+
+function renderIconsBar(){
+    document.querySelector('.icon-1').innerText = getIconTxt(0 + gIconIdx)
+    document.querySelector('.icon-2').innerText = getIconTxt(1 + gIconIdx)
+    document.querySelector('.icon-3').innerText = getIconTxt(2 + gIconIdx)
+}
+
+function nextIcons(change){
+    gIconIdx += change
+    gIconIdx = (gIconIdx < 0) ? getLastIdx() : gIconIdx
+    gIconIdx = (gIconIdx > getLastIdx()) ? 0 : gIconIdx
+
+    renderIconsBar()
+}
+
+function setTxtInput(){
+    let txt = getLineTxt(gLineIdx)
+    document.querySelector('.txt-line-input').value = ''
+    document.querySelector('.txt-line-input').placeholder = txt
 }

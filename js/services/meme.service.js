@@ -4,6 +4,8 @@ var gKeywordSearchCountMap = {'funny': 12,'cat': 10, 'baby': 7, 'cynical': 8, 'a
 
 let gSearchTxt = ''
 
+const gIcons = ['😎','😍','😂','😅','🤗','🍔']
+
 var gImgs = [
     {id: 0, url: 'images/meme-imgs/0.jpg', keywords: []},
     {id: 1, url: 'images/meme-imgs/1.jpg', keywords: ['funny', 'politics','trump','funy face','american']},
@@ -16,7 +18,7 @@ var gImgs = [
     {id: 8, url: 'images/meme-imgs/8.jpg', keywords: ['funny', 'cynical','smart']},
     {id: 9, url: 'images/meme-imgs/9.jpg', keywords: ['funny', 'baby','evil','laughing']},
     {id: 10, url: 'images/meme-imgs/10.jpg', keywords: ['funny', 'laughing','America']},
-    {id: 11, url: 'images/meme-imgs/11.jpg', keywords: ['funny', 'kiss','love']},
+    {id: 11, url: 'images/meme-imgs/11.jpg', keywords: ['funny', 'yes','cute','win']},
     {id: 12, url: 'images/meme-imgs/12.jpg', keywords: ['funny', 'pointing','israeli']},
     {id: 13, url: 'images/meme-imgs/13.jpg', keywords: ['funny', 'movie','pointing']},
     {id: 14, url: 'images/meme-imgs/14.jpg', keywords: ['funny', 'black','rapper','america']},
@@ -28,7 +30,7 @@ var gImgs = [
 var gMeme = { 
     selectedImgId: 5, 
     selectedLineIdx: 0, 
-    icons: [],
+    icons: {iconTxt: '', iconIdx:0 ,iconIdy: 0},
     lines: [ {txt:'', x: 250, y: 70, size: 60, align:'center', color:'red', isSelected: true},
     {txt:'', x: 250, y: 437, size: 60, align:'center', color:'red', isSelected: false},
     {txt:'', x: 250, y: 250, size: 60, align:'center', color:'red' , isSelected: false}] 
@@ -81,13 +83,12 @@ function getTextSize(idx){
     return gMeme.lines[idx].size
 }
 
-function setIcon(icon){
-    gMeme.icons.push({iconTxt: icon, iconIdx:250,iconIdy:250})
-    
+function setIcon(idx){
+    gMeme.icons = {iconTxt: gIcons[idx], iconIdx:250,iconIdy:250}
 }
 
 function getIcon(){
-    return gMeme.icons[0] || {iconTxt: '', iconIdx:0 ,iconIdy: 0}
+    return gMeme.icons
 }
 
 function getCommonWords(){
@@ -110,4 +111,37 @@ function setImgFilter(value){
 
 function clearTxt(idx){
     gMeme.lines[idx].txt = ''
+}
+
+function getIconTxt(idx){
+    return gIcons[idx]
+}
+
+function getLastIdx(){
+    return gIcons.length - 3
+}
+
+function lineClickedIdx(clickedPos){
+    
+    let linegrab = gMeme.lines.findIndex(line => {
+        return (clickedPos.y < line.y + 10 && clickedPos.y > line.y - 50 &&
+            line.txt)
+    })
+    let line = gMeme.lines.find(line => {
+        return (clickedPos.y < line.y + 10 && clickedPos.y > line.y - 50 &&
+            line.txt)
+    })
+    console.log(line);
+    console.log(linegrab);
+    return linegrab
+}
+
+function setLineCoords(dx,dy,lineIdx){
+    gMeme.lines[lineIdx].x += dx
+    gMeme.lines[lineIdx].y += dy
+    console.log('x:',gMeme.lines[lineIdx].x,'y:',gMeme.lines[lineIdx].y);
+}
+
+function getLineTxt(idx){
+    return gMeme.lines[idx].txt
 }

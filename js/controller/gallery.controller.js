@@ -16,7 +16,7 @@ function renderCommonWords(){
     let strHTML = ''
     words.map((word)=> {
         strHTML += `
-        <button style="font-size:${wordsMap[word] *5}px;">${word}</button>
+        <button style="font-size:${wordsMap[word] *5}px;" onclick="onImgSearch('${word}')"">${word}</button>
         `
     })
     document.querySelector('.common-words').innerHTML = strHTML

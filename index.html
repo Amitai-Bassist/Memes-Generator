@@ -28,6 +28,7 @@
     <main class="image-gallery full space-between align-center">
       <section class="">
         <input type="text" placeholder="Search" oninput="onImgSearch(this.value)">
+        <button onclick="onImgSearch('')">Show all</button>
         <div class="common-words"></div>
         <button>🔀</button>
       </section>
@@ -53,10 +54,11 @@
           <input type="color" id="text-color" name="text-color" form="frmRegister" value="#ff0000" onchange="changeColor(this.value)"/>
         </div>
         <div class="icon-bar">
-          <button onclick="choseIcon('😎')">😎</button>
-          <button>😍</button>
-          <button>😂😅</button>
-          <button>😅</button>
+          <button class="icon next-icon" onclick="nextIcons(-1)">⬅</button>
+          <button class="icon icon-1" onclick="choseIcon(0)"></button>
+          <button class="icon icon-2" onclick="choseIcon(1)"></button>
+          <button class="icon icon-3" onclick="choseIcon(2)"></button>
+          <button class="icon next-icon" onclick="nextIcons(1)">➡</button>
         </div>
         <div class="btns-3">
           <button class="share-btn" onclick="uploadImg()">Share</button>
