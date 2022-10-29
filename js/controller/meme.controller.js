@@ -76,13 +76,11 @@ function addTouchListeners() {
 }
   
 function onDown(ev) {
-    // console.log('Im from onDown')
     //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
     gIsDown = true
     let lineIdx = lineClickedIdx(pos)
     if (lineIdx < 0) return
-    console.log('lineIdx',lineIdx);
     gLineDragIdx = lineIdx
     gLineIdx = lineIdx
     setSelectedLine(gLineIdx)
@@ -94,22 +92,16 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
-    // console.log(gIsDown);
     if (!gIsDown) return
     const pos = getEvPos(ev)
-    // console.log('Im from onMove')
-    // if (!gLineDragIdx) return
-    //Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
-    console.log('dx:',dx,'dy:',dy);
     setLineCoords(dx,dy,gLineDragIdx)
     gStartPos = pos
     renderMeme()
 }
   
 function onUp() {
-    console.log('Im from onUp')
     gIsDown = false
     gLineDragIdx = -1
     document.body.style.cursor = 'auto'
@@ -191,9 +183,8 @@ function clearCanvas() {
 function downloadCanvas(elLink){
     // Gets the canvas content and convert it to base64 data URL that can be save as an image
     const data = gElCanvas.toDataURL(/* DEFAULT: 'image/png'*/) // Method returns a data URL containing a representation of the image in the format specified by the type parameter.
-    console.log('data', data) // Decoded the image to base64 
     elLink.href = data // Put it on the link
-    elLink.download = 'shuki' // Can change the name of the file
+    elLink.download = 'my-Meme' // Can change the name of the file
 }
 
 // The next 2 functions handle IMAGE UPLOADING to img tag from file system: 

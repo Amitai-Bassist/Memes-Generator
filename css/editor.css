@@ -86,7 +86,7 @@ canvas{
     display: grid;
     grid-template-columns:repeat(auto-fit, minmax(40px, 1fr));
     grid-template-rows: 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 5px;
     background: #19a59f;
     grid-auto-flow: dense;
 }
@@ -142,16 +142,16 @@ canvas{
     .meme-editor{
         padding-top: 2px;
         /* padding-right: 10px; */
-        grid-template-columns: 320px ;
-        grid-template-rows: 300px 1fr;
+        grid-template-columns: 500px ;
+        grid-template-rows: 500px 1fr;
         grid-gap: 4px;
         /* align-items: center; */
         margin-bottom: 0px;
     }
 
     .canvas-container{
-        width: 300px;
-        height: 300px;
+        width: 500px;
+        height: 500px;
         /* margin-left: 40px; */
     }
     .control-box{
