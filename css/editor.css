@@ -1,7 +1,12 @@
 
 .btn-editor{
-    height: 2rem;
-    width: 2rem;
+    height: 3em;
+    width: 3em;
+    cursor: pointer;
+}
+
+.btn-editor:hover{
+    background-color: antiquewhite;
 }
   
 .btns-1 .change{
@@ -25,8 +30,10 @@
     grid-auto-flow: dense;
     gap: 10px;
     padding-left: 6px;
+    padding-top: 70px;
     padding-right: 60px;
     width: auto;
+    margin-bottom: 50px;
 }
 
 .canvas-container{
@@ -42,6 +49,7 @@ canvas{
 }
 
 .control-box{
+    max-width: 600px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 2fr 1fr 1fr 1fr;
     grid-template-areas:
@@ -132,11 +140,13 @@ canvas{
 @media (max-width: 560px) {
     
     .meme-editor{
-        
+        padding-top: 2px;
+        /* padding-right: 10px; */
         grid-template-columns: 320px ;
         grid-template-rows: 300px 1fr;
         grid-gap: 4px;
         /* align-items: center; */
+        margin-bottom: 0px;
     }
 
     .canvas-container{
@@ -145,9 +155,10 @@ canvas{
         /* margin-left: 40px; */
     }
     .control-box{
+        width: 300px;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 30px 40px 40px 30px 30px 30px;
-        grid-gap:2px;
+        grid-gap:1px;
     }
 
     

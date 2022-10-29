@@ -184,11 +184,8 @@ function changeTxtSize(num){
 }
   
 function clearCanvas() {
-    // Sets all pixels in the rectangle defined by starting point (x, y) and size (width, height)
-    // to transparent black, erasing any previously drawn content.
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-    // You may clear part of the canvas
-    // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height / 4)
+    clearMemeTxt()
+    renderMeme()
 }
 
 function downloadCanvas(elLink){

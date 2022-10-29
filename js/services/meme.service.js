@@ -107,6 +107,7 @@ function getImgsForDisplay(){
 
 function setImgFilter(value){
     gSearchTxt = value
+    if (gKeywordSearchCountMap[value] ) gKeywordSearchCountMap[value]++
 }
 
 function clearTxt(idx){
@@ -144,4 +145,10 @@ function setLineCoords(dx,dy,lineIdx){
 
 function getLineTxt(idx){
     return gMeme.lines[idx].txt
+}
+
+function clearMemeTxt(){
+    gMeme.lines = [ {txt:'', x: 250, y: 70, size: 60, align:'center', color:'red', isSelected: true},
+    {txt:'', x: 250, y: 437, size: 60, align:'center', color:'red', isSelected: false},
+    {txt:'', x: 250, y: 250, size: 60, align:'center', color:'red' , isSelected: false}] 
 }
