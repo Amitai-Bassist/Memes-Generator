@@ -69,6 +69,7 @@ function addListeners() {
     //Listen for resize ev 
     window.addEventListener('resize', () => {
       resizeCanvas()
+      renderMeme()
     })
 }
   
@@ -181,6 +182,13 @@ function changeTxtSize(num){
 function clearCanvas() {
     clearMemeTxt()
     renderMeme()
+}
+
+function saveMeme(){
+    resetSelectedLines()
+    renderMeme()
+    const data = gElCanvas.toDataURL
+    console.log(data);
 }
 
 function downloadCanvas(elLink){
