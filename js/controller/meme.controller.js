@@ -142,9 +142,9 @@ function getEvPos(ev) {
 
 
 function resizeCanvas() {
-    // const elContainer = document.querySelector('.canvas-container')
-    // gElCanvas.width = elContainer.offsetWidth
-    // gElCanvas.height = elContainer.offsetHeight
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
 }
   
 function renderImg(img) {
