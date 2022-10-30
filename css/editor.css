@@ -142,16 +142,16 @@ canvas{
     .meme-editor{
         padding-top: 2px;
         /* padding-right: 10px; */
-        grid-template-columns: 500px ;
-        grid-template-rows: 500px 1fr;
+        grid-template-columns: 360px ;
+        grid-template-rows: 350px 1fr;
         grid-gap: 4px;
         /* align-items: center; */
         margin-bottom: 0px;
     }
 
     .canvas-container{
-        width: 500px;
-        height: 500px;
+        width: 350px;
+        height: 350px;
         /* margin-left: 40px; */
     }
     .control-box{

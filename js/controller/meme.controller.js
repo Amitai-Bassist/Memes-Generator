@@ -247,3 +247,8 @@ function setTxtInput(){
     document.querySelector('.txt-line-input').value = ''
     document.querySelector('.txt-line-input').placeholder = txt
 }
+
+function alignTxt(value){
+    setLineAlign(value,gLineIdx)
+    renderMeme()
+}

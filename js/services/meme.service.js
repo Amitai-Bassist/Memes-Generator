@@ -65,7 +65,6 @@ function getCoords(idx){
 }
 
 function setColor(value,idx){
-    console.log('value',value);
     gMeme.lines[idx].color = value
 }
 
@@ -132,15 +131,12 @@ function lineClickedIdx(clickedPos){
         return (clickedPos.y < line.y + 10 && clickedPos.y > line.y - 50 &&
             line.txt)
     })
-    console.log(line);
-    console.log(linegrab);
     return linegrab
 }
 
 function setLineCoords(dx,dy,lineIdx){
     gMeme.lines[lineIdx].x += dx
     gMeme.lines[lineIdx].y += dy
-    console.log('x:',gMeme.lines[lineIdx].x,'y:',gMeme.lines[lineIdx].y);
 }
 
 function getLineTxt(idx){
@@ -151,4 +147,8 @@ function clearMemeTxt(){
     gMeme.lines = [ {txt:'', x: 250, y: 70, size: 60, align:'center', color:'red', isSelected: true},
     {txt:'', x: 250, y: 437, size: 60, align:'center', color:'red', isSelected: false},
     {txt:'', x: 250, y: 250, size: 60, align:'center', color:'red' , isSelected: false}] 
+}
+
+function setLineAlign(value,idx){
+    gMeme.lines[idx].x = value
 }
