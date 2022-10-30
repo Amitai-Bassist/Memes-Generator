@@ -30,20 +30,29 @@ function renderMeme(img){
     } else{
         drawImg(img)
     }
+    
+}
+
+function drawConTent(){
     let lines = getMeme().lines
     lines.map((line,idx)=>{
         let {txt, x, y, size, align, color , isSelected} = line
-        setTimeout(() => {
-            if (isSelected) drawBox(10, y-40,size)
-            drawText(txt, x, y,size,color) 
-        },20)
+        if (isSelected) drawBox(10, y-40,size)
+            drawText(txt, x, y,size,color,align) 
     })
-    
-    setTimeout(()=>{
         let icon = getIcon()
         let {iconTxt,iconIdx,iconIdy} = icon
         drawText(iconTxt, iconIdx, iconIdy)
-    },10)
+}
+
+function drawImg(image) {
+    const img = new Image() // Create a new html img element
+    img.src = image // Send a network req to get that image, define the img src
+    // When the image ready draw it on the canvas
+    img.onload = () => {
+      gCtx.drawImage(img, 0, 0, gElCanvas.clientWidth, gElCanvas.clientHeight)
+      drawConTent()
+    }
 }
 
 function addTxtRow(){
@@ -78,6 +87,7 @@ function addTouchListeners() {
 function onDown(ev) {
     //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
+    console.log('pos:',pos);
     gIsDown = true
     let lineIdx = lineClickedIdx(pos)
     if (lineIdx < 0) return
@@ -129,14 +139,7 @@ function getEvPos(ev) {
     return pos
 }
 
-function drawImg(image) {
-    const img = new Image() // Create a new html img element
-    img.src = image // Send a network req to get that image, define the img src
-    // When the image ready draw it on the canvas
-    img.onload = () => {
-      gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    }
-}
+
 
 function resizeCanvas() {
     // const elContainer = document.querySelector('.canvas-container')
@@ -160,12 +163,12 @@ function inputText(text, x, y) {
     renderMeme()
   }
 
-function drawText(text, x = 250, y = 47,size,color){
+function drawText(text, x = 250, y = 47,size,color,align){
     gCtx.lineWidth = 2
     gCtx.strokeStyle = color
     gCtx.fillStyle = 'black'
     gCtx.font = `${size}px Arial`
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = align
     gCtx.fillText(text, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(text, x, y) // Draws (strokes) a given text at the given (x, y) position.
 }
@@ -209,6 +212,7 @@ function loadImageFromInput(ev, onImageReady) {
 
 function changeColor(value){
     setColor(value,gLineIdx)
+    renderMeme()
 }
 
 function choseIcon(idx){
@@ -248,7 +252,7 @@ function setTxtInput(){
     document.querySelector('.txt-line-input').placeholder = txt
 }
 
-function alignTxt(value){
-    setLineAlign(value,gLineIdx)
+function alignTxt(value,direction){
+    setLineAlign(value,direction,gLineIdx)
     renderMeme()
 }

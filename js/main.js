@@ -2,6 +2,12 @@
 
 function onInit(){
     renderGallery()
+    document.querySelector('.img-0').innerHTML = `<input
+    type="file"
+    class="file-input btn"
+    name="image"
+    onchange="onImgInput(event)"
+  />`
 }
 
 function toggleMenu() {
@@ -9,6 +15,16 @@ function toggleMenu() {
 }
 
 function toEditorMode(el){
+    console.log('this:',el.classList[0]);
+    // if (el.classList[0] === 'img-0'){
+    //     el.innerHTML = `<input
+    //     type="file"
+    //     class="file-input btn"
+    //     name="image"
+    //     onchange="onImgInput(event)"
+    //   />`
+        
+    // }
     document.querySelector('.image-gallery').hidden = true
     document.querySelector('.meme-editor').hidden = false
     document.querySelector('.meme-editor').style.display = 'grid'

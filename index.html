@@ -12,7 +12,7 @@
 <body onload="onInit()" class="main-layout">
     <div class="main-screen full" onclick="toggleMenu()"></div>
     <header class="main-header full main-layout">
-      <div class="header flex space-between align-center">
+      <div class="header full flex space-between align-center">
         <div class="logo">Memes</div>
         <nav class="main-nav ">
             <ul class="flex clear-list flex align-center justify-center">
@@ -26,13 +26,17 @@
     </header>
 
     <main class="image-gallery full space-between align-center">
-      <section class="">
-        <input type="text" placeholder="Search" oninput="onImgSearch(this.value)">
-        <span class="common-words"></span>
-        <button onclick="onImgSearch('')">Show all</button>
-        <button>🔀</button>
+      <section class="filter-bar flex align-center">
+        <input class="text-search" type="text" placeholder="Search                             🔍" oninput="onImgSearch(this.value)">
+        <div class="sub-header-container flex align-center">
+          <div class="common-words flex space-even align-center">
+
+          </div>
+          <button class="show-all" onclick="onImgSearch('')">Show all</button>
+          <button>🔀</button>
+        </div>
       </section>
-      <div class="grid gallery-container"></div>
+      <section class="grid gallery-container"></section>
     </main>
     <section hidden class="meme-editor grid full" style="display: none;">
       <div class="canvas-container">
@@ -48,10 +52,10 @@
         <div class="btns-2">
           <button class="btn-editor txt-engage" onclick="changeTxtSize(10)">A+</button>
           <button class="btn-editor txt-engage" onclick="changeTxtSize(-10)">A-</button>
-          <button onclick="alignTxt(50)" class="btn-editor txt-engage"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAM0lEQVRIiWNgGAUEACMa/z+1zWWikoHDGFAjDtDNQAGjcUAQjOaDgQej+WDgwWg+GAEAAKBZBRB/eva4AAAAAElFTkSuQmCC"></button>
-          <button onclick="alignTxt(250)" class="btn-editor txt-engage"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAQklEQVRIiWNgGABwlIGB4T+Z+DC6YUxYLPhHgeP+U6B3pANKIhZvhMMimZKIxQVGI5x8MJqThykYzckjDIzmZBQAAC8YY1KjkRlKAAAAAElFTkSuQmCC"></button>
-          <button  onclick="alignTxt(450)" class="btn-editor txt-engage"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAQElEQVRIie3UMQoAIAwEwcX//8qHxcrGMkRF3IHUR+A40I86EMXX15C2+YkpDuWoRqZ8lkuAy6WLXC6luVx62wBcIWBQUp9PbQAAAABJRU5ErkJggg=="></button>
-          <input class="btn-editor" type="color" id="text-color" name="text-color" form="frmRegister" value="#ff0000" onchange="changeColor(this.value)"/>
+          <button onclick="alignTxt(10,'left')" class="btn-editor txt-engage"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAM0lEQVRIiWNgGAUEACMa/z+1zWWikoHDGFAjDtDNQAGjcUAQjOaDgQej+WDgwWg+GAEAAKBZBRB/eva4AAAAAElFTkSuQmCC"></button>
+          <button onclick="alignTxt(250,'center')" class="btn-editor txt-engage"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAQklEQVRIiWNgGABwlIGB4T+Z+DC6YUxYLPhHgeP+U6B3pANKIhZvhMMimZKIxQVGI5x8MJqThykYzckjDIzmZBQAAC8YY1KjkRlKAAAAAElFTkSuQmCC"></button>
+          <button  onclick="alignTxt(485,'right')" class="btn-editor txt-engage"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAQElEQVRIie3UMQoAIAwEwcX//8qHxcrGMkRF3IHUR+A40I86EMXX15C2+YkpDuWoRqZ8lkuAy6WLXC6luVx62wBcIWBQUp9PbQAAAABJRU5ErkJggg=="></button>
+          <input class="btn-editor" type="color" id="text-color" name="text-color" form="frmRegister" value="#ff0000" oninput="changeColor(this.value)"/>
         </div>
         <div class="icon-bar">
           <button class="icon next-icon" onclick="nextIcons(-1)">⬅</button>

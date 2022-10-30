@@ -91,6 +91,10 @@ button{
   .flex.align-center {
     align-items: center;
   }
+
+.flex.column {
+  flex-direction: column;
+}
   
   .flex.justify-center {
     justify-content: center;
@@ -99,6 +103,10 @@ button{
   .flex.space-between {
     justify-content: space-between;
   }
+
+.flex.space-even {
+    justify-content: space-evenly;
+}
   
 /* grid helpers */
 .grid{
@@ -142,6 +150,8 @@ body.menu-open .main-screen {
 
 /* header  */
 
+
+
 .main-header {
   background: rgb(15,155,178);
   background: linear-gradient(90deg, rgba(15,155,178,1) 0%, rgba(15,155,178,1) 35%, rgba(0,212,255,1) 100%);
@@ -159,7 +169,7 @@ body.menu-open .main-screen {
 .main-header .logo {
     font-family: euro, sans-serif;
     font-size: 2.5rem;
-    padding-left: 20px;
+    padding-left: 60px;
 }
 
 .main-header .title-logo {
@@ -238,13 +248,19 @@ body.menu-open .main-screen {
   
 /* gallery */
 
+.text-search{
+  font-size: larger;
+}
+
 .gallery-container{
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-flow: dense;
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+    /* grid-auto-flow: dense; */
     gap: 10px;
     padding: 60px;
     width: auto;
-  margin-bottom: 10px;
+    min-height: 80vh;
+    margin-bottom: 10px;
     /* grid-template-columns: repeat(5,400px);
     grid-template-rows: repeat(6,400px);
     grid-gap: 10px; */
@@ -261,19 +277,39 @@ body.menu-open .main-screen {
   box-shadow: 5px 5px 5px 0px #c8a3a3, inset 4px 4px 15px 0px #e9b2b2, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 
+.filter-bar{
+  padding-left: 60px;
+  padding-top: 50px;
+  flex-wrap: wrap;
+}
+
 .common-words{
-  background-color: #88898d;
-  height: 4rem;
+  
+  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 25px;
+  background-color: #979696;
+  height: max-content;
+  padding: 5px;
+  padding-left: 10px;
+  flex: 1;
+  margin-left: 20px;
 }
 
 
 .common-word{
   cursor: pointer;
-  background-color: #88898d
+  background-color: #979696;
+  padding-right: 5px;
+  
 }
 
 .common-word:hover{
   color: white;
+}
+
+.show-all{
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 /* footer */
@@ -311,6 +347,25 @@ footer{
   .social-links img {
     display: none;
   }
+
+@media (max-width: 780px){
+  .common-words{
+    padding-left: 10px;
+    flex: 1;
+    margin-left: 0px;
+  }
+  .filter-bar{
+    padding-left: 7px;
+  }
+  .sub-header-container{
+    flex-wrap: wrap;
+  }
+  .gallery-container{
+    padding-top: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+}
 
 @media (max-width: 560px) {
     
@@ -369,6 +424,8 @@ footer{
     }
     .gallery-container{
       padding-top: 5px;
+      padding-left: 7px;
+      padding-right: 7px;
     }
     footer{
       margin-top: 3px;
